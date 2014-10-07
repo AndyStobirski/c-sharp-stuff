@@ -25,14 +25,21 @@
 
         }
 
-        //get or set the controls selected colour
-        public Color Color
+        Color _SelectedColour;
+        public Color SelectedColour
         {
-            get { return Color.FromName(this.SelectedText); }
+            get { return _SelectedColour; }
             set
             {
+                _SelectedColour = value;
                 this.SelectedItem = value.Name.ToString();
             }
+        }
+
+        //change the selected colour
+        protected override void OnSelectedIndexChanged(EventArgs e)
+        {
+            _SelectedColour = Color.FromName(this.SelectedItem.ToString());
         }
 
         //override 
